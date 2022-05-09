@@ -36,8 +36,8 @@
         <strong class="mx-2">Rodrigo</strong>
       </div>
 
-      <form action="" class="formPost">
-        <textarea name="textarea" placeholder="Seja Bem vindo"></textarea>
+      <form action="" class="formPost" id="formPost">
+        <textarea name="textarea" placeholder="Seja Bem vindo" id="textarea"></textarea>
         <div class="iconsAndButton">
           <div class="icons">
             <button class="btnFileForm"><img src="./assets/img.png" title="Imagem" alt="adicionar uma imagem"
@@ -47,77 +47,18 @@
                 style="width:30px;"></button>
           </div>
 
-          <button class="btnSubmitForm rounded px-2  mx-2" type="submit">Publicar</button>
+          <button class="btnSubmitForm rounded px-2  mx-2" id="botao" type="submit">Publicar</button>
         </div>
       </form>
     </div>
 
-    <ul class="posts">
-      <li class="post mb-5 px-4 py-4 ">
-        <div class="infoUserPost ">
-          <div class="imgUserPost "></div>
-          <div class="nameAndHour">
-            <strong>Rodrigo</strong>
-            <p>21h</p>
-          </div>
-        </div>
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          
-          <div class="actionBtnPost">
-            <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./assets/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
-            <button type="button" class="filePost mx-5" style="background-color:lightseagreen"><img src="./assets/comentar.png" alt="Comentar"><b class="text-white">Comentar</b></button>
-            <button type="button" class="filePost " style="background-color: deepskyblue;"><img src="./assets/compartilhar.png" alt="compartilhar"><b class="text-white">Compartilhar</b></button>
-            
-          </div>
-      </li>
-
-      <li class="post mb-5 px-4 py-4">
-        <div class="infoUserPost">
-          <div class="imgUserPost"></div>
-          <div class="nameAndHour">
-            <strong>Rodrigo</strong>
-            <p>21h</p>
-          </div>
-        </div>
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          
-          <div class="actionBtnPost">
-            <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./assets/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
-            <button type="button" class="filePost mx-5" style="background-color:lightseagreen"><img src="./assets/comentar.png" alt="Comentar"><b class="text-white">Comentar</b></button>
-            <button type="button" class="filePost " style="background-color: deepskyblue;"><img src="./assets/compartilhar.png" alt="compartilhar"><b class="text-white">Compartilhar</b></button>
-            
-          </div>
-      </li>
-
-      <li class="post px-4 py-4">
-        <div class="infoUserPost">
-          <div class="imgUserPost"></div>
-          <div class="nameAndHour">
-            <strong>Rodrigo</strong>
-            <p>21h</p>
-          </div>
-        </div>
-        <p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. 
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor 
-          in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non 
-          proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-          
-          <div class="actionBtnPost">
-            <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./assets/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
-            <button type="button" class="filePost mx-5 " style="background-color:lightseagreen"><img src="./assets/comentar.png" alt="Comentar"><b class="text-white">Comentar</b></button>
-            <button type="button" class="filePost " style="background-color: deepskyblue;"><img src="./assets/compartilhar.png" alt="compartilhar"><b class="text-white">Compartilhar</b></button>
-            
-          </div>
-      </li>
+    <ul class="posts" id="posts">
+      
     </ul>
 
   </main>
+
+  <script type="module" src="/Controllers/FormPost.js"></script>
 
 </body>
 

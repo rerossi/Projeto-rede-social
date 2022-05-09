@@ -124,7 +124,8 @@ nav{
 }
 
 .post{
-
+    margin-bottom: 50px;
+    padding: 25px;
     width: 100%;
     background: #fff;
     border-radius: 10px;
