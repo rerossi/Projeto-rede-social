@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="novoUsuario.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> 
+    <title>Document</title>
+</head>
+<body>
+
+    <main class="container">
+
+        <h2> Novo Usuário </h2>
+
+          <form method="post" action="">
+
+            <div class="input-field">
+              <input type="text" name="fullName" id="fullName" placeholder="Digite seu nome completo" required>
+              <div class="underline"> </div>
+            </div>
+
+            <div class="input-field">
+              <input type="text" name="mail" id="mail" placeholder="seuemail@exemplo.com" required>
+              <div class="underline"> </div>
+            </div>
+
+            <div class="input-field">
+                <input type="tel" name="phone" id="phone" placeholder="(DDD) xxxxx - xxxx">
+                <div class="underline"> </div>
+              </div>
+
+            <div class="input-field">
+                <input type="text" name="CPF" id="CPF" placeholder="Digite seu CPF" required>
+                <div class="underline"> </div>
+              </div>
+
+            <div class="input-field">
+              <input type="password" name="password" id="password" placeholder="Digite sua senha" required>
+              <i id="verSenha" class="fa fa-eye" aria-hidden="true"></i>
+              <div class="underline"> </div>
+            </div>
+
+            <div class="input-field">
+              <input type="password" name="confirm" id="confirm" placeholder="Confirme sua senha" required>
+              <i id="verConfirmaSenha" class="fa fa-eye" aria-hidden="true"></i>
+              <div class="underline"> </div>
+            </div>
+
+            <input type="submit" value="Cadastrar">
+
+           
+          </form>
+      </main>
+    <script src="/Controllers/novoUsuario.js"></script>
+</body>
+</html>
