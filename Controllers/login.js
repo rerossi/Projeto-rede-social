@@ -3,7 +3,7 @@ function logar(){
     let email = document.getElementById('email');
     let senha = document.getElementById('password');
 
-    if(value.email == "mail@mail.com" && value.senha == "admin"){
+    if(email.value == "mail@mail.com" && senha.value == "admin"){
 
         localStorage.setItem("acesso", true);
 

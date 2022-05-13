@@ -15,41 +15,40 @@
         <h2> Novo Usuário </h2>
 
           <form method="post" action="">
-
-            <div class="input-field">
+            <label for="fullName" id="labelFullName" style="color:darkblue;"><b>Nome Completo:</b></label>
+            <div class="input-field ">
               <input type="text" name="fullName" id="fullName" placeholder="Digite seu nome completo" required>
               <div class="underline"> </div>
             </div>
-
+            <label for="mail" id="labelMail" style="color:darkblue;"><b>E-mail:</b></label>
             <div class="input-field">
               <input type="text" name="mail" id="mail" placeholder="seuemail@exemplo.com" required>
               <div class="underline"> </div>
             </div>
-
+            <label for="phone" id="labelPhone" style="color:darkblue;"><b>Telefone:</b></label>
             <div class="input-field">
                 <input type="tel" name="phone" id="phone" placeholder="(DDD) xxxxx - xxxx">
                 <div class="underline"> </div>
               </div>
-
+              <label for="cpf" id="labelCPF" style="color:darkblue;"><b>CPF:</b></label>
             <div class="input-field">
                 <input type="text" name="CPF" id="CPF" placeholder="Digite seu CPF" required>
                 <div class="underline"> </div>
               </div>
-
+              <label for="password" id="labelPassword" style="color:darkblue;"><b>Senha:</b></label>
             <div class="input-field">
               <input type="password" name="password" id="password" placeholder="Digite sua senha" required>
               <i id="verSenha" class="fa fa-eye" aria-hidden="true"></i>
               <div class="underline"> </div>
             </div>
-
+            <label for="confirm" id="labelConfirm" style="color:darkblue;"><b>Confirme sua senha:</b></label>
             <div class="input-field">
               <input type="password" name="confirm" id="confirm" placeholder="Confirme sua senha" required>
               <i id="verConfirmaSenha" class="fa fa-eye" aria-hidden="true"></i>
               <div class="underline"> </div>
             </div>
 
-            <input type="submit" value="Cadastrar">
-
+            <button onclick="cadastrar()">Entrar</button>
            
           </form>
       </main>
