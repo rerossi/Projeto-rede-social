@@ -99,6 +99,17 @@ button {
 }
 
 .fa-eye {
-    margin-left: 100px;
+    margin-left: 90px;
     cursor: pointer;
 }
+
+#msgError{
+    text-align: center;
+    color: #ff0000;
+    background-color: #ffbbbb;
+    padding: 10px;
+    border-radius: 4px;
+    display: none;
+    margin-bottom: 20px;
+  }
+  

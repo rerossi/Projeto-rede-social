@@ -128,6 +128,8 @@ confirmPassword.addEventListener('keyup', () => {
 })
 
 function cadastrar() {
+    let msgCadError = document.querySelector('#msgCadError');
+
     if (validFullName && validMail && validCPF && validPassword && validConfirmPassword) {
 
         console.log(validFullName + ' ' + validMail + ' ' + validCPF + ' ' + validPassword + ' ' + validConfirmPassword)
@@ -144,9 +146,12 @@ function cadastrar() {
         })
 
         localStorage.setItem('listaUser', JSON.stringify(listaUser));
+        const newpage = window.location.href = "../formLogin.html";
     } else {
 
-        alert('Erro')
+        msgCadError.setAttribute('style', 'display: block')
+        msgCadError.innerHTML = 'Verifique o preenchimento dos campos'
+
     }
 
 }
@@ -156,18 +161,18 @@ function cadastrar() {
 
 //pega o id do campo i referente a classe fa-eye do formNovoUsuario 
 //referente a senha
-let hidden = document.querySelector('#verSenha');
+let btnLogin = document.querySelector('#verSenhaLogin');
 
 //evento para visualizar o campo senha
-hidden.addEventListener('click', () => {
+btnLogin.addEventListener('click', () => {
     //pega o 
-    let inputSenha = document.querySelector('#password');
+    let inputPassWord = document.querySelector('#passwordLogin');
 
 
-    if (inputSenha.getAttribute('type') == 'password') {
-        inputSenha.setAttribute('type', 'text');
+    if (inputPassWord.getAttribute('type') == 'password') {
+        inputPassWord.setAttribute('type', 'text');
     } else {
-        inputSenha.setAttribute('type', 'password');
+        inputPassWord.setAttribute('type', 'password');
 
     }
 });
@@ -178,12 +183,12 @@ function login() {
 
     //pega os elementos do formLogin
     let mail = document.getElementById('mail');
-    let password = document.getElementById('password');
+    let password = document.getElementById('passwordLogin');
+    let msgError = document.querySelector('#msgError')
 
     let listaUser = [];
 
     let loginValid = {
-
         mail: '',
         password: ''
     }
@@ -196,13 +201,17 @@ function login() {
             loginValid = {
                 mail: item.mailCad,
                 password: item.passwordCad
-
             }
-
-            //direciona para a tela principal index
-            const newLocal = window.location.href = "../index.html";
         }
-
     });
+    if (mail.value == loginValid.mail && password.value == loginValid.password) {
+
+        //direciona para a tela principal index
+        const newLocal = window.location.href = "../index.html";
+    } else {
+        msgError.setAttribute('style', 'display: block')
+        msgError.innerHTML = 'Usuário ou senha incorretos'
+    }
 
 }
+
