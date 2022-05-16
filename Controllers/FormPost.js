@@ -2,6 +2,7 @@ export class FormPost {
 
     constructor(idForm, idTextarea, idUlPost) {
 
+        //pega os elementos do form
         this.form = document.getElementById(idForm);
         this.textarea = document.getElementById(idTextarea);
         this.ulPost = document.getElementById(idUlPost);
@@ -12,32 +13,33 @@ export class FormPost {
 
         this.form.addEventListener('submit', func);
 
-        
+
     }
 
     formValidate(value) {
+        //valida os valores do campo texto para publicação
         if (value === '' || value === null || value === undefined || value.length < 3) {
-          return false
+            return false
         }
         return true
-      }
+    }
 
-      //pega a hora atual
-      getTime(){
+    //pega a hora atual
+    getTime() {
         const time = new Date();
         const hour = time.getHours();
         const minutes = time.getMinutes();
         return `${hour}h ${minutes}min`;
-      }
+    }
 
     addSubmit() {
 
         const handleSubmit = (event) => {
 
             event.preventDefault();
-            if (this.formValidate(this.textarea.value)){
-            
-                const time = this.getTime();    
+            if (this.formValidate(this.textarea.value)) {
+
+                const time = this.getTime();
 
                 //cria um novo post
                 const newPost = document.createElement('li');
@@ -68,11 +70,11 @@ export class FormPost {
             </div>
             `;
 
-        this.ulPost.append(newPost);
-        this.textarea.value = '';
-          }else{
-              alert('Verifique o campo digitado');
-          }
+                this.ulPost.append(newPost);
+                this.textarea.value = '';
+            } else {
+                alert('Verifique o campo digitado');
+            }
         }
 
         this.onSubmit(handleSubmit)
@@ -80,4 +82,5 @@ export class FormPost {
 
 }
 
+//instancia a classe FormPost
 const postForm = new FormPost('formPost', 'textarea', 'posts');
