@@ -7,6 +7,11 @@
     box-sizing: border-box;
 }
 
+.logo img{
+
+    margin-left: 700px;
+}
+
 body{
 
     background-color: #fbfbfb;

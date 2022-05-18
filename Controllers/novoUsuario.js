@@ -69,25 +69,12 @@ fullName.addEventListener('keyup', () => {
     }
 });
 
-mail.addEventListener('keyup', () => {
-
-    if (mail.value.length > 30) {
-        labelMail.setAttribute('style', 'color: red');
-        labelMail.innerHTML = 'E-mail: * Máximo de 30 caracteres';
-        validMail = false;
-
-    } else {
-        labelMail.innerHTML = '<b>E-mail:</b>';
-        validMail = true;
-
-    }
-})
 
 cpf.addEventListener('keyup', () => {
 
     if (cpf.value.length > 11 || cpf.value.length < 11) {
         labelCPF.setAttribute('style', 'color: red');
-        labelCPF.innerHTML = 'CPF: este campo precisa ter 11 números sem ponto e traço'
+        labelCPF.innerHTML = 'CPF: obrigatório 11 números sem ponto e traço'
         validCPF = false;
     } else if (cpf.value.length == 11) {
         labelCPF.setAttribute('style', 'color: green');
