@@ -51,7 +51,7 @@ export class FormPost {
             <div class="infoUserPost">
                 <div class="imgUserPost"></div>
                 <div class="nameAndHour">
-                    <strong>Rodrigo</strong>
+                    <strong>${userLogado.fullName}</strong>
                     <p>
                         ${time}
                     </p>
@@ -84,3 +84,20 @@ export class FormPost {
 
 //instancia a classe FormPost
 const postForm = new FormPost('formPost', 'textarea', 'posts');
+    
+
+let userLogado = JSON.parse(localStorage.getItem('userLogado')) 
+
+let logado = document.querySelector('#logado')
+
+let postName = document.querySelector('#postName')
+
+logado.innerHTML = `Olá ${userLogado.fullName}`
+postName.innerHTML = `${userLogado.fullName}`
+
+let photo = document.getElementById('imgPhoto');
+let file = document.getElementById('flImage');
+
+photo.addEventListener('click', () => {
+    file.click();
+});

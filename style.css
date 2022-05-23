@@ -7,6 +7,14 @@
     box-sizing: border-box;
 }
 
+input[type='file'] {
+    display: none;
+}
+
+#imgPhoto{
+    cursor: pointer;
+}
+
 .logo img{
 
     margin-left: 700px;

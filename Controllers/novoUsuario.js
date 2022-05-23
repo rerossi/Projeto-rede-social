@@ -36,11 +36,6 @@ btnConfirm.addEventListener('click', () => {
 let fullName = document.querySelector('#fullName');
 let validFullName = false;
 
-let mail = document.querySelector('#mail');
-let validMail = false;
-
-let phone = document.querySelector('#phone');
-
 let cpf = document.querySelector('#CPF');
 let validCPF = false;
 
@@ -117,9 +112,8 @@ confirmPassword.addEventListener('keyup', () => {
 function cadastrar() {
     let msgCadError = document.querySelector('#msgCadError');
 
-    if (validFullName && validMail && validCPF && validPassword && validConfirmPassword) {
+    if (validFullName && validCPF && validPassword && validConfirmPassword) {
 
-        console.log(validFullName + ' ' + validMail + ' ' + validCPF + ' ' + validPassword + ' ' + validConfirmPassword)
         let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]');
 
         listaUser.push({
