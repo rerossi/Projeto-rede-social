@@ -117,9 +117,9 @@ confirmPassword.addEventListener('keyup', () => {
 function cadastrar() {
     let msgCadError = document.querySelector('#msgCadError');
 
-    if (validFullName && validMail && validCPF && validPassword && validConfirmPassword) {
+    if (validFullName && validCPF && validPassword && validConfirmPassword) {
 
-        console.log(validFullName + ' ' + validMail + ' ' + validCPF + ' ' + validPassword + ' ' + validConfirmPassword)
+        console.log(validFullName + ' ' + validCPF + ' ' + validPassword + ' ' + validConfirmPassword)
         let listaUser = JSON.parse(localStorage.getItem('listaUser') || '[]');
 
         listaUser.push({
