@@ -1,11 +1,12 @@
-export class FormPost {
+class FormPost {
 
-    constructor(idForm, idTextarea, idUlPost) {
+    constructor(idForm, idTextarea, idUlPost, idPostImage) {
 
         //pega os elementos do form
         this.form = document.getElementById(idForm);
         this.textarea = document.getElementById(idTextarea);
         this.ulPost = document.getElementById(idUlPost);
+        this.postImage = document.getElementById(idPostImage);
         this.addSubmit();
     }
 
@@ -51,7 +52,7 @@ export class FormPost {
             <div class="infoUserPost">
                 <div class="imgUserPost"></div>
                 <div class="nameAndHour">
-                    <strong>Rodrigo</strong>
+                    <strong>${userLogado.fullName}</strong>
                     <p>
                         ${time}
                     </p>
@@ -61,6 +62,7 @@ export class FormPost {
             ${this.textarea.value}
             
             </p>
+            <img src="${this.postImage.src}">
           
             <div class="actionBtnPost">
             <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./assets/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
@@ -68,10 +70,13 @@ export class FormPost {
             <button type="button" class="filePost " style="background-color: deepskyblue;"><img src="./assets/compartilhar.png" alt="compartilhar"><b class="text-white">Compartilhar</b></button>
             
             </div>
+
+            <div class="postImage"></div>
             `;
 
                 this.ulPost.append(newPost);
                 this.textarea.value = '';
+                this.postImage.src = '';
             } else {
                 alert('Verifique o campo digitado');
             }
@@ -83,4 +88,21 @@ export class FormPost {
 }
 
 //instancia a classe FormPost
-const postForm = new FormPost('formPost', 'textarea', 'posts');
+const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage');
+
+
+let userLogado = JSON.parse(localStorage.getItem('userLogado'))
+
+let logado = document.querySelector('#logado')
+
+let postName = document.querySelector('#postName')
+
+logado.innerHTML = `Olá ${userLogado.fullName}`
+postName.innerHTML = `${userLogado.fullName}`
+
+let photo = document.getElementById('imgPhoto');
+let file = document.getElementById('flImage');
+
+photo.addEventListener('click', () => {
+    file.click();
+});

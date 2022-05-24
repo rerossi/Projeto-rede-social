@@ -19,20 +19,16 @@
     <header>
         <nav class="navbar navbar-light row">
             <div class=" logo col ">
-                    <img src="assets/Oi_Sumido (2).png" width="150px" alt="Logo Oi Sumido">
-                    
-                
+                <img src="assets/Oi_Sumido (2).png" width="150px" alt="Logo Oi Sumido">
+
+
             </div>
-            
+
             <div class="container justify-content-end col me-4">
-                <h5 class="mx-2 mt-1">Sair</h5>
-                <a href=""><img src="assets/logout.png" width="25px" alt="logout"></a>
+                <h5 class="me-4" id="logado"></h5>
+                <!--<a  href=""><img onclick="logout()" src="assets/logout.png" width="25px" alt="logout"></a>!-->
+                <button onclick="logout()">sair</button>
             </div>
-           
-            
-           
-            
-            
         </nav>
     </header>
 
@@ -40,20 +36,25 @@
         <div class="newPost mb-4 mt-4 px-4 py-5">
             <div class="infoUser">
                 <div class="imgUser my-2"></div>
-                <strong class="mx-2"></strong>
+                <strong id="postName" class="mx-2"></strong>
             </div>
 
             <form action="" class="formPost" id="formPost">
                 <textarea name="textarea" placeholder="Seja Bem vindo" id="textarea" maxlength="2000"></textarea>
+                <img id="uploadImage" src="" alt="">
                 <div class="iconsAndButton">
                     <div class="icons">
-                        <button class="btnFileForm"><img src="./assets/img.png" title="Imagem" alt="adicionar uma imagem"
-                style="width: 30px;"></button>
-                        <button class="btnFileForm"><img src="./assets/audio.png" title="Audio" alt="adicionar um audio" style="width:30px;"></button>
+
+                        <img src="assets/img.png" alt="Selecione uma imagem" title="imagem" id="imgPhoto" style="width:30px;">
+
+                        <input type="file" id="flImage" name="fImage" accept="image/*">
+
+                        <button class="btnFileForm"><img src="./assets/audio.png" title="Audio" alt="adicionar um audio"
+                                style="width:30px;"></button>
                         <button class="btnFileForm"><img src="./assets/video.png" title="Video" alt="adicionar um video"
-                style="width:30px;"></button>
-                <button class="btnFileForm"><img src="./assets/desenhar.png" title="Desenhar" alt="adicionar um Desenho"
-                    style="width:30px;"></button>
+                                style="width:30px;"></button>
+                        <button class="btnFileForm"><img src="./assets/desenhar.png" title="Desenhar"
+                                alt="adicionar um Desenho" style="width:30px;"></button>
                     </div>
 
                     <button class="btnSubmitForm rounded px-2  mx-2" id="botao" type="submit">Publicar</button>
@@ -65,11 +66,24 @@
 
         </ul>
 
-        
+
 
     </main>
 
-    <script type="module" src="/Controllers/FormPost.js"></script>
+    <script src="Controllers/FormPost.js"></script>
+    <script>
+        const flImage = document.querySelector("#flImage");
+
+        flImage.addEventListener("change", function() {
+            const reader = new FileReader();
+            reader.addEventListener("load", () => {
+                const uploaded_image = reader.result;
+                document.querySelector("#uploadImage").src = uploaded_image;
+            });
+            reader.readAsDataURL(this.files[0]);
+        });
+    </script>
+
 
 
 </body>

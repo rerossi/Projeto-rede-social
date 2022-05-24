@@ -36,11 +36,6 @@ btnConfirm.addEventListener('click', () => {
 let fullName = document.querySelector('#fullName');
 let validFullName = false;
 
-let mail = document.querySelector('#mail');
-let validMail = false;
-
-let phone = document.querySelector('#phone');
-
 let cpf = document.querySelector('#CPF');
 let validCPF = false;
 
@@ -133,7 +128,7 @@ function cadastrar() {
         })
 
         localStorage.setItem('listaUser', JSON.stringify(listaUser));
-        const newpage = window.location.href = "../formLogin.html";
+        const newpage = window.location.href = "formLogin.html";
     } else {
 
         msgCadError.setAttribute('style', 'display: block')
@@ -142,9 +137,3 @@ function cadastrar() {
     }
 
 }
-
-
-//Login 
-
-//pega o id do campo i referente a classe fa-eye do formNovoUsuario 
-//referente a senha

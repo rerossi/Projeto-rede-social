@@ -15,6 +15,7 @@ btnLogin.addEventListener('click', () => {
 });
 
 
+
 function login() {
 
     //pega os elementos do formLogin
@@ -25,6 +26,7 @@ function login() {
     let listaUser = [];
 
     let loginValid = {
+        fullName: '',
         mail: '',
         password: ''
     }
@@ -35,6 +37,7 @@ function login() {
         if (mail.value == item.mailCad && password.value == item.passwordCad) {
 
             loginValid = {
+                fullName: item.fullNameCad,
                 mail: item.mailCad,
                 password: item.passwordCad
             }
@@ -43,10 +46,28 @@ function login() {
     if (mail.value == loginValid.mail && password.value == loginValid.password) {
 
         //direciona para a tela principal index
-        const newLocal = window.location.href = "../index.html";
+        const newLocal = window.location.href = "index.html";
+
+        localStorage.setItem('userLogado', JSON.stringify(loginValid));
+
     } else {
         msgError.setAttribute('style', 'display: block')
-        msgError.innerHTML = 'Usuário ou senha incorretos'
+        msgError.innerHTML = 'E-mail ou senha incorretos'
     }
 
+}
+
+
+
+//Logout
+
+if (localStorage.getItem()) {
+    alert('você precisa estar logado para acessar essa página');
+    window.location.href = 'index.html';
+
+}
+
+function logout() {
+
+    window.location.href = 'formLogin.html';
 }

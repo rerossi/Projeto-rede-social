@@ -13,32 +13,25 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background: linear-gradient(180deg, lightskyblue 50%, white 50%);
+    background: linear-gradient(180deg, #00a8ff 50%, white 50%);
 }
 
-.label-float input:focus + label,
-.label-float input:valid + label
-{   
-    font-size: 20px;
-    margin-top: 0;
-    color: #4038a0;
-}
 
- main.container {
+main.container {
      background :#fff;
      min-width: 450px;
-     min-height: 40vh;
+     min-height: 70vh;
      padding: 2rem;
      box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
      border-radius: 8px;
  }
 
- main h2{
-     font-weight: 600;
-     margin-bottom: 2rem;
-     position: relative;
- }
-
+ main h2 {
+    font-weight: 600;
+    margin-bottom: 2rem;
+    position: relative;
+    
+}
 
 main h2::before {
     content: '';
@@ -49,8 +42,15 @@ main h2::before {
     left: 0px;
     border-radius: 8px;
     background: #00a8ff;
+}
 
- }
+.newUser{
+    display: flex;
+}
+
+.newUser h2{
+    margin-top: 20px;
+}
 
  form{
     display: flex;

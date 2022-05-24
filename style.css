@@ -1,19 +1,24 @@
-*{
+* {
     margin: 0;
     padding: 0;
-
     /*o tamando leva em conta até a borda, width é a soma 
     /* da borda com o padding*/
     box-sizing: border-box;
 }
 
-.logo img{
+input[type='file'] {
+    display: none;
+}
 
+#imgPhoto {
+    cursor: pointer;
+}
+
+.logo img {
     margin-left: 700px;
 }
 
-body{
-
+body {
     background-color: #fbfbfb;
     font-family: 'Roboto', sans-serif;
 }
@@ -23,61 +28,49 @@ li {
     list-style: none;
 }
 
-nav{
-
+nav {
     background-color: lightskyblue;
 }
 
-.main{
-
+.main {
     max-width: 900px;
-    margin: 0 auto;;
+    margin: 0 auto;
+    ;
 }
 
 .newPost {
-    
-    display:flex;
+    display: flex;
     width: 100%;
-    height: 240px;
-    
     /* os itens ficam dispostos em colunas */
     flex-direction: column;
-
     /* Posiciona itens-flex a partir do início */
     align-items: flex-start;
-    
-
     background: #fff;
-    border-radius: 10px ;
-
+    border-radius: 10px;
     /* adiciona uma sombra no elemento*/
-    box-shadow: 10px 5px 5px black;;
+    box-shadow: 10px 5px 5px black;
+    ;
 }
 
-.btnFileForm{
-
+.btnFileForm {
     background-color: white;
     border: none;
 }
 
-.infoUser{
-
-    display:flex;
+.infoUser {
+    display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .imgUser {
-
     width: 35px;
     height: 35px;
     border-radius: 50%;
     background: #333;
-
 }
 
 .formPost {
-
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -91,65 +84,51 @@ nav{
     border: 0;
     outline: none;
     resize: none;
-
     font-weight: bold;
-    font-family: 'Roboto' , sans-serif;
+    font-family: 'Roboto', sans-serif;
     color: #727272;
 }
 
-.iconsAndButton{
-
+.iconsAndButton {
     display: flex;
     align-items: center;
     justify-content: space-between;
 }
 
-.btnSubmitForm{
-
+.btnSubmitForm {
     background-color: lightyellow;
-    
 }
 
-.filePost img{
-
+.filePost img {
     width: 30px;
     padding-left: 5px;
     padding-right: 5px;
-    
-    
-
-    
 }
 
-.actionBtnPost button{
-
+.actionBtnPost button {
     border-radius: 10px;
     width: 150px;
     height: 35px;
 }
 
-.post{
+.post {
     margin-bottom: 50px;
     padding: 25px;
     width: 100%;
     background: #fff;
     border-radius: 10px;
-    box-shadow: 10px 5px 5px black;;
+    box-shadow: 10px 5px 5px black;
+    ;
 }
 
-.infoUserPost{
-
+.infoUserPost {
     display: flex;
-    
 }
 
-.imgUserPost{
-
+.imgUserPost {
     width: 35px;
     height: 35px;
     border-radius: 50%;
     background: #23A0FF;
     margin-right: 8px;
-
 }
-
