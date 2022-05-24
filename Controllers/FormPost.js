@@ -1,12 +1,13 @@
-class FormPost {
+ class FormPost {
 
-    constructor(idForm, idTextarea, idUlPost, idPostImage) {
+    constructor(idForm, idTextarea, idUlPost, idPostImage, idPostVideo) {
 
         //pega os elementos do form
         this.form = document.getElementById(idForm);
         this.textarea = document.getElementById(idTextarea);
         this.ulPost = document.getElementById(idUlPost);
         this.postImage = document.getElementById(idPostImage);
+        this.postVideo = document.getElementById(idPostVideo);
         this.addSubmit();
     }
 
@@ -62,7 +63,11 @@ class FormPost {
             ${this.textarea.value}
             
             </p>
-            <img src="${this.postImage.src}">
+           
+            <img src="${this.postImage.src}" style="width:50%;">
+            
+           
+            <video src="${this.postVideo.src}" controls style="width:50%;">
           
             <div class="actionBtnPost">
             <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./assets/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
@@ -70,13 +75,12 @@ class FormPost {
             <button type="button" class="filePost " style="background-color: deepskyblue;"><img src="./assets/compartilhar.png" alt="compartilhar"><b class="text-white">Compartilhar</b></button>
             
             </div>
-
-            <div class="postImage"></div>
             `;
 
                 this.ulPost.append(newPost);
                 this.textarea.value = '';
                 this.postImage.src = '';
+                this.postVideo.src = '';
             } else {
                 alert('Verifique o campo digitado');
             }
@@ -88,7 +92,7 @@ class FormPost {
 }
 
 //instancia a classe FormPost
-const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage');
+const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage', 'uploadVideo');
 
 
 let userLogado = JSON.parse(localStorage.getItem('userLogado'))
@@ -105,4 +109,11 @@ let file = document.getElementById('flImage');
 
 photo.addEventListener('click', () => {
     file.click();
+});
+
+let myVideo = document.getElementById('myVideo');
+let flVideo = document.getElementById('flVideo');
+
+myVideo.addEventListener('click', () => {
+    flVideo.click();
 });

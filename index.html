@@ -26,7 +26,6 @@
 
             <div class="container justify-content-end col me-4">
                 <h5 class="me-4" id="logado"></h5>
-                <!--<a  href=""><img onclick="logout()" src="assets/logout.png" width="25px" alt="logout"></a>!-->
                 <button onclick="logout()">sair</button>
             </div>
         </nav>
@@ -42,17 +41,22 @@
             <form action="" class="formPost" id="formPost">
                 <textarea name="textarea" placeholder="Seja Bem vindo" id="textarea" maxlength="2000"></textarea>
                 <img id="uploadImage" src="" alt="">
+                <video id="uploadVideo" src="" ></video>
+                 
                 <div class="iconsAndButton">
                     <div class="icons">
 
-                        <img src="assets/img.png" alt="Selecione uma imagem" title="imagem" id="imgPhoto" style="width:30px;">
+                     <img src="assets/img.png" alt="Selecione uma imagem" title="imagem" id="imgPhoto" style="width:30px;">
 
                         <input type="file" id="flImage" name="fImage" accept="image/*">
 
                         <button class="btnFileForm"><img src="./assets/audio.png" title="Audio" alt="adicionar um audio"
                                 style="width:30px;"></button>
-                        <button class="btnFileForm"><img src="./assets/video.png" title="Video" alt="adicionar um video"
-                                style="width:30px;"></button>
+
+                                <img src="assets/video.png" alt="Selecione um video" title="video" id="myVideo" style="width:30px;">
+
+                                <input type="file" id="flVideo" name="fVideo" accept="video/*" onchange="upload()">
+
                         <button class="btnFileForm"><img src="./assets/desenhar.png" title="Desenhar"
                                 alt="adicionar um Desenho" style="width:30px;"></button>
                     </div>
@@ -69,10 +73,10 @@
 
 
     </main>
-
-    <script src="Controllers/FormPost.js"></script>
+    <script src="/Controllers/login.js"></script>
+    <script src="/Controllers/FormPost.js"></script>
     <script>
-        const flImage = document.querySelector("#flImage");
+       const flImage = document.querySelector("#flImage");
 
         flImage.addEventListener("change", function() {
             const reader = new FileReader();
@@ -82,6 +86,17 @@
             });
             reader.readAsDataURL(this.files[0]);
         });
+
+        function upload(){
+            var input = document.getElementById('flVideo');
+            const reader = new FileReader();
+            reader.readAsDataURL(input.files[0]);
+            reader.onload = function(){
+                document.getElementById('uploadVideo').src = reader.result;
+            }
+        }
+
+
     </script>
 
 

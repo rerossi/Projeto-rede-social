@@ -63,11 +63,11 @@ function login() {
 
 if (localStorage.getItem()) {
     alert('você precisa estar logado para acessar essa página');
-    window.location.href = 'index.html';
+    window.location.href = '../index.html';
 
 }
 
 function logout() {
 
-    window.location.href = 'formLogin.html';
+    window.location.href = '../formLogin.html';
 }
