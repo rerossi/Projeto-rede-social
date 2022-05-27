@@ -41,21 +41,21 @@
             <form action="" class="formPost" id="formPost">
                 <textarea name="textarea" placeholder="Seja Bem vindo" id="textarea" maxlength="2000"></textarea>
                 <img id="uploadImage" src="" alt="">
-                <video id="uploadVideo" src="" ></video>
-                 
+                <video id="uploadVideo" src=""></video>
+
                 <div class="iconsAndButton">
                     <div class="icons">
 
-                     <img src="assets/img.png" alt="Selecione uma imagem" title="imagem" id="imgPhoto" style="width:30px;">
+                        <img src="assets/img.png" alt="Selecione uma imagem" title="imagem" id="imgPhoto" style="width:30px;">
 
                         <input type="file" id="flImage" name="fImage" accept="image/*">
 
                         <button class="btnFileForm"><img src="./assets/audio.png" title="Audio" alt="adicionar um audio"
                                 style="width:30px;"></button>
 
-                                <img src="assets/video.png" alt="Selecione um video" title="video" id="myVideo" style="width:30px;">
+                        <img src="assets/video.png" alt="Selecione um video" title="video" id="myVideo" style="width:30px;">
 
-                                <input type="file" id="flVideo" name="fVideo" accept="video/*" onchange="upload()">
+                        <input type="file" id="flVideo" name="fVideo" accept="video/*" style="width:30px;">
 
                         <button class="btnFileForm"><img src="./assets/desenhar.png" title="Desenhar"
                                 alt="adicionar um Desenho" style="width:30px;"></button>
@@ -73,30 +73,9 @@
 
 
     </main>
-    <script src="/Controllers/login.js"></script>
-    <script src="/Controllers/FormPost.js"></script>
+    <script src="./Controllers/login.js"></script>
+    <script src="./Controllers/FormPost.js"></script>
     <script>
-       const flImage = document.querySelector("#flImage");
-
-        flImage.addEventListener("change", function() {
-            const reader = new FileReader();
-            reader.addEventListener("load", () => {
-                const uploaded_image = reader.result;
-                document.querySelector("#uploadImage").src = uploaded_image;
-            });
-            reader.readAsDataURL(this.files[0]);
-        });
-
-        function upload(){
-            var input = document.getElementById('flVideo');
-            const reader = new FileReader();
-            reader.readAsDataURL(input.files[0]);
-            reader.onload = function(){
-                document.getElementById('uploadVideo').src = reader.result;
-            }
-        }
-
-
     </script>
 
 

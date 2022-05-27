@@ -14,18 +14,17 @@ input[type='file'] {
     cursor: pointer;
 }
 
-#myVideo{
+#myVideo {
     cursor: pointer;
 }
 
-#uploadImage{
-    width: 50%;
+#uploadImage {
+    max-width: 30%;
 }
 
-#uploadVideo{
-    width: 50%;
+#uploadVideo {
+    max-width: 30%;
 }
-
 
 .logo img {
     margin-left: 700px;
