@@ -34,6 +34,31 @@
          return `${hour}h ${minutes}min`;
      }
 
+     findMYCity (){
+        const status = document.querySelector('status');
+       const success = (position) =>{
+           const latitude = position.coords.latitude;
+           const longitude = position.coords.longitude;
+    
+           const geoApiUrl = `https://api.bigdatacloud.net/data/
+           reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
+    
+           fetch(geoApiUrl)
+           .then(res => res.json())
+           .then(data => {
+               status.textContent = data.principalSubdivision
+           })
+       }
+    
+       const error = () =>{
+           status.textContent = 'Não foi possível achar a sua localização';
+       }
+    
+       navigator.geolocation.getCurrentPosition(success, error);
+    }
+
+    
+
      addSubmit() {
 
          const handleSubmit = (event) => {
@@ -42,6 +67,8 @@
              if (this.formValidate(this.textarea.value)) {
 
                  const time = this.getTime();
+
+                 const find = this.findMYCity();
 
                  //cria um novo post
                  const newPost = document.createElement('li');
@@ -57,6 +84,7 @@
                     <p>
                         ${time}
                     </p>
+                    <p id="status">${console.log(find)}<p>
                  </div>
             </div>
             <p>
@@ -94,6 +122,8 @@
      }
 
  }
+
+
 
  //instancia a classe FormPost
  const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage', 'uploadVideo');
@@ -146,3 +176,8 @@
  myVideo.addEventListener('click', () => {
      flVideo.click();
  });
+
+ //geolocalização do usuário
+
+   
+ 

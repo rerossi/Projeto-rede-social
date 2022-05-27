@@ -69,5 +69,5 @@ if (localStorage.getItem()) {
 
 function logout() {
 
-    window.location.href = '../formLogin.html';
+    window.location.href = 'formLogin.html';
 }
