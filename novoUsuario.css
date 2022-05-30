@@ -1,9 +1,8 @@
-*{
+* {
     margin: 0;
     border: 0;
     padding: 0;
     box-sizing: border-box;
-   
 }
 
 body {
@@ -16,21 +15,19 @@ body {
     background: linear-gradient(180deg, #00a8ff 50%, white 50%);
 }
 
-
 main.container {
-     background :#fff;
-     min-width: 450px;
-     min-height: 70vh;
-     padding: 2rem;
-     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
-     border-radius: 8px;
- }
+    background: #fff;
+    min-width: 450px;
+    min-height: 70vh;
+    padding: 2rem;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+}
 
- main h2 {
+main h2 {
     font-weight: 600;
     margin-bottom: 2rem;
     position: relative;
-    
 }
 
 main h2::before {
@@ -44,27 +41,28 @@ main h2::before {
     background: #00a8ff;
 }
 
-.newUser{
+.newUser {
     display: flex;
 }
 
-.newUser h2{
+.newUser h2 {
     margin-top: 20px;
 }
 
- form{
+form {
     display: flex;
     flex-direction: column;
 }
- .input-field {
-     position: relative;
- }
 
- form .input-field {
+.input-field {
+    position: relative;
+}
+
+form .input-field {
     margin-bottom: 1.2rem;
 }
 
- .input-field input {
+.input-field input {
     outline: none;
     font-size: 0.9rem;
     color: rgba(0, 0, 0, 0.7);
@@ -78,9 +76,9 @@ form .input-field .underline::before {
     bottom: -5px;
     left: 0;
     background: rgba(0, 0, 0, 0.2);
- }
+}
 
- form .input-field .underline::after {
+form .input-field .underline::after {
     content: '';
     position: absolute;
     height: 1.5px;
@@ -93,30 +91,29 @@ form .input-field .underline::before {
     transform-origin: left;
 }
 
-.input-field input:focus ~ .underline::after{
+.input-field input:focus~.underline::after {
     transform: scaleX(1);
 }
 
 .input-field input ::placeholder {
     color: rgba(0, 0, 0, 0.5)
-} 
-
-button{
-    background: linear-gradient(to right, lightskyblue, #00a8ff); 
-    width: 100%;
-    height: 30px;
-    border-radius: 8px;
-
 }
 
+button {
+    background: linear-gradient(to right, lightskyblue, #00a8ff);
+    width: 50%;
+    margin-left: 100px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+}
 
-.fa-eye{
-
+.fa-eye {
     margin-left: 200px;
     cursor: pointer;
 }
 
-#msgCadError{
+#msgCadError {
     text-align: center;
     color: #ff0000;
     background-color: #ffbbbb;
@@ -124,4 +121,4 @@ button{
     border-radius: 4px;
     display: none;
     margin-bottom: 20px;
-  }
+}

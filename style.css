@@ -18,8 +18,12 @@ input[type='file'] {
     cursor: pointer;
 }
 
+#myAudio {
+    cursor: pointer;
+}
+
 #uploadImage {
-    max-width: 30%;
+    max-width: 10%;
 }
 
 #uploadVideo {
@@ -27,7 +31,7 @@ input[type='file'] {
 }
 
 .logo img {
-    margin-left: 700px;
+    margin-left: 650px;
 }
 
 body {
@@ -143,4 +147,61 @@ nav {
     border-radius: 50%;
     background: #23A0FF;
     margin-right: 8px;
+}
+
+.btnLogout {
+    background: lightgoldenrodyellow;
+    width: 10%;
+    margin-left: 100px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.coracao {
+    width: 1px;
+    height: 1px;
+    position: relative;
+    margin: 0 20px;
+    animation: pulse 1s infinite alternate ease-in-out;
+    margin: 0 auto;
+    margin-right: 165px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.9) rotate(-135deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(-135deg);
+    }
+}
+
+.quadrado {
+    width: 25px;
+    height: 25px;
+    background: #c70000;
+    position: absolute;
+}
+
+.circulo-1 {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #c70000;
+    position: absolute;
+    top: 12px;
+}
+
+.circulo-2 {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #c70000;
+    position: absolute;
+    left: 12px;
+}
+
+#logado {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }

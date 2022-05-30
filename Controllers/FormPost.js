@@ -1,6 +1,6 @@
  class FormPost {
 
-     constructor(idForm, idTextarea, idUlPost, idPostImage, idPostVideo) {
+     constructor(idForm, idTextarea, idUlPost, idPostImage, idPostVideo, idPostAudio) {
 
          //pega os elementos do form
          this.form = document.getElementById(idForm);
@@ -8,6 +8,7 @@
          this.ulPost = document.getElementById(idUlPost);
          this.postImage = document.getElementById(idPostImage);
          this.postVideo = document.getElementById(idPostVideo);
+         this.postAudio = document.getElementById(idPostAudio);
          this.addSubmit();
      }
 
@@ -34,30 +35,9 @@
          return `${hour}h ${minutes}min`;
      }
 
-     findMYCity (){
-        const status = document.querySelector('status');
-       const success = (position) =>{
-           const latitude = position.coords.latitude;
-           const longitude = position.coords.longitude;
-    
-           const geoApiUrl = `https://api.bigdatacloud.net/data/
-           reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=en`
-    
-           fetch(geoApiUrl)
-           .then(res => res.json())
-           .then(data => {
-               status.textContent = data.principalSubdivision
-           })
-       }
-    
-       const error = () =>{
-           status.textContent = 'Não foi possível achar a sua localização';
-       }
-    
-       navigator.geolocation.getCurrentPosition(success, error);
-    }
 
-    
+
+
 
      addSubmit() {
 
@@ -68,7 +48,7 @@
 
                  const time = this.getTime();
 
-                 const find = this.findMYCity();
+
 
                  //cria um novo post
                  const newPost = document.createElement('li');
@@ -84,7 +64,7 @@
                     <p>
                         ${time}
                     </p>
-                    <p id="status">${console.log(find)}<p>
+                    
                  </div>
             </div>
             <p>
@@ -92,12 +72,15 @@
             
             </p>`;
 
-                 console.log("Image:" + this.postImage.mostrar)
+
                  if (this.postImage.mostrar)
-                     newPost.innerHTML += `<img src="${this.postImage.src}" style="width:30%;">`;
-                 console.log("Video:" + this.postVideo.mostrar)
+                     newPost.innerHTML += `<img src="${this.postImage.src}" style="width:30%; margin-bottom: 20px;">`;
+
                  if (this.postVideo.mostrar)
-                     newPost.innerHTML += `<video src="${this.postVideo.src}" controls style="width:30%;">`;
+                     newPost.innerHTML += `<video src="${this.postVideo.src}" controls style="width:30%; margin-bottom: 20px;"></video>`;
+
+                 if (this.postAudio.mostrar)
+                     newPost.innerHTML += `<audio src="${this.postAudio.src}" controls style="width:30%; margin-bottom: 20px;"></audio>`;
 
                  newPost.innerHTML += `<div class="actionBtnPost">
             <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./assets/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
@@ -113,6 +96,8 @@
                  this.postImage.mostrar = false;
                  this.postVideo.src = null;
                  this.postVideo.mostrar = false;
+                 this.postAudio.src = null;
+                 this.postAudio.mostrar = false;
              } else {
                  alert('Verifique o campo digitado');
              }
@@ -126,13 +111,16 @@
 
 
  //instancia a classe FormPost
- const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage', 'uploadVideo');
+ const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage', 'uploadVideo', 'uploadAudio');
 
  const flImage = document.querySelector("#flImage");
- const flVideo1 = document.querySelector("#flVideo");
+ const flVideo = document.querySelector("#flVideo");
+ const flAudio = document.querySelector("#flAudio");
  flImage.mostrar = false;
- flVideo1.mostrar = false;
+ flVideo.mostrar = false;
+ flAudio.mostrar = false;
 
+ //função upload da imagem
  flImage.addEventListener("change", function() {
      const reader = new FileReader();
      reader.addEventListener("load", () => {
@@ -143,12 +131,26 @@
      reader.readAsDataURL(this.files[0]);
  });
 
- flVideo1.addEventListener("change", function() {
+ //função upload do video
+
+ flVideo.addEventListener("change", function() {
      const reader = new FileReader();
      reader.addEventListener("load", () => {
          const uploaded_video = reader.result;
          document.querySelector("#uploadVideo").mostrar = true;
          document.querySelector("#uploadVideo").src = uploaded_video;
+     });
+     reader.readAsDataURL(this.files[0]);
+ });
+
+ //função de upload do audio
+
+ flAudio.addEventListener("change", function() {
+     const reader = new FileReader();
+     reader.addEventListener("load", () => {
+         const uploaded_audio = reader.result;
+         document.querySelector("#uploadAudio").mostrar = true;
+         document.querySelector("#uploadAudio").src = uploaded_audio;
      });
      reader.readAsDataURL(this.files[0]);
  });
@@ -171,13 +173,19 @@
  });
 
  let myVideo = document.getElementById('myVideo');
- let flVideo = document.getElementById('flVideo');
+ let fileVideo = document.getElementById('flVideo');
+
 
  myVideo.addEventListener('click', () => {
-     flVideo.click();
+     fileVideo.click();
+ });
+
+ let myAudio = document.getElementById('myAudio');
+ let fileAudio = document.getElementById('flAudio');
+
+
+ myAudio.addEventListener('click', () => {
+     flAudio.click();
  });
 
  //geolocalização do usuário
-
-   
- 
