@@ -85,56 +85,7 @@
 
     </main>
     <script src="./Controllers/login.js"></script>
-    <script src="./Controllers/FormPost.js"></script>
-
-    <!--
-     <script>
-        const findMYCity = () => {
-            const status = document.querySelector('.status');
-            const success = (position) => {
-                const latitude = position.coords.latitude;
-                const longitude = position.coords.longitude;
-
-                const geoApiUrl = `https://api.bigdatacloud.net/data/
-                                reverse-geocode-client?latitude=${latitude}&longitude=${longitude}&localityLanguage=pt-br`
-
-
-                fetch(geoApiUrl)
-                    .then(res => res.json())
-                    .then(data => {
-                        status.textContent = data.city
-                    })
-            }
-
-            const error = () => {
-                status.textContent = 'Não foi possível achar a sua localização';
-            }
-
-            navigator.geolocation.getCurrentPosition(success, error);
-        }
-
-        document.querySelector('.city').addEventListener('click', findMYCity)
-    </script>
-
--->
-    <script>
-        $('#location-button').click(function() {
-
-            if (navigator.geolocation) {
-                navigator.geolocation.getCurrentPosition(function(position) {
-                    console.log(position);
-                    $.get("http://maps.googleapis.com/maps/api/geocode/json?latlng=" + position.coords.latitude + "," + position.coords.longitude + "&sensor=false", function(data) {
-                        console.log(data);
-                    })
-                    var img = new Image();
-                    img.src = "https://maps.googleapis.com/maps/api/staticmap?center=" + position.coords.latitude + "," + position.coords.longitude + "&zoom=13&size=800x400&sensor=false";
-                    $('#output').html(img);
-                });
-
-            }
-
-        });
-    </script>
+    <script src="./Controllers/FormPost.js"></script>   
 
 </body>
 
