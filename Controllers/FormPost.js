@@ -57,6 +57,11 @@
 
                  //mostra um elemento Html
                  newPost.innerHTML = `
+                 <details>
+            <summary><b><img src="assets/map.png" style="width:40px; margin-bottom: 10px; margin-right: 5px; ">Sua Localização</b></summary>
+                <p><b>Latitude: <span id="latitude"></span>
+                      Longitude: <span id="longitude"></span></b></p>
+            </details>
             <div class="infoUserPost">
                 <div class="imgUserPost"></div>
                 <div class="nameAndHour">
@@ -189,3 +194,28 @@
  });
 
  //geolocalização do usuário
+
+ function getLocation(){
+    if("geolocation" in navigator){
+
+                            //watchPosition
+        navigator.geolocation.watchPosition(locationSucess, locationError)
+    }
+    else{
+        alert("Não existe API de Geolocalização");
+    }    
+}
+
+function locationSucess(data){
+    let latitude = data.coords.latitude;
+    let longitude = data.coords.longitude;
+
+    document.getElementById("latitude").innerHTML = latitude;
+    document.getElementById("longitude").innerHTML = longitude;
+
+    console.log(latitude,longitude);
+}
+
+function locationError(data){
+    
+}
