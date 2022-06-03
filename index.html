@@ -7,18 +7,26 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style/style.css">
     <title>Oi Sumido</title>
     <style>
-        .hidden{
+        .hidden {
             display: none;
         }
 
-        .show{
+        .show {
             display: block;
+        }
+
+        #imgConverted{
+            display: none;
+            
         }
     </style>
 </head>
@@ -61,30 +69,35 @@
                 <div class="iconsAndButton">
                     <div class="icons">
 
-                        <img src="assets/img.png" alt="Selecione uma imagem" title="imagem" id="imgPhoto" style="width:30px;">
+                        <img src="assets/img.png" alt="Selecione uma imagem" title="imagem" id="imgPhoto"
+                            style="width:30px;">
 
                         <input type="file" id="flImage" name="fImage" accept="image/*">
 
-                        <img src="assets/audio.png" title="Audio" alt="adicionar um audio" id="myAudio" style="width:30px;">
+                        <img src="assets/audio.png" title="Audio" alt="adicionar um audio" id="myAudio"
+                            style="width:30px;">
 
                         <input type="file" id="flAudio" name="fAudio" accept="audio/*">
 
-                        <img src="assets/video.png" alt="Selecione um video" title="video" id="myVideo" style="width:30px;">
+                        <img src="assets/video.png" alt="Selecione um video" title="video" id="myVideo"
+                            style="width:30px;">
 
                         <input type="file" id="flVideo" name="fVideo" accept="video/*" style="width:30px;">
 
-                        <img src="assets/desenhar.png" alt="Faça um desenho" title="desenho" id="myDraw" style="width:30px;" onclick="mostraDraw()">
+                        <img src="assets/desenhar.png" alt="Faça um desenho" title="desenho" id="myDraw"
+                            style="width:30px;" onclick="mostraDraw()">
 
-                        <input  type="button" id="FlDraw" name="fDraw" style="width:30px;" > 
+                        <input type="button" id="FlDraw" name="fDraw" style="width:30px;">
 
                     </div>
 
-                    <button class="btnSubmitForm rounded px-2  mx-2" id="botao" type="submit" onclick="getLocation()">Publicar</button>
+                    <button class="btnSubmitForm rounded px-2  mx-2" id="botao" type="submit"
+                        onclick="getLocation()">Publicar</button>
 
                 </div>
             </form>
         </div>
-        
+
 
         <ul class="posts" id="posts">
 
@@ -94,103 +107,100 @@
         <video id="uploadVideo" src=""></video>
         <audio id="uploadAudio" src=""></audio>
         <div id="abc" class="hidden">
-        <div id="toolbar">
-            <h1>Draw.</h1>
-            <label for="stroke">Stroke</label>
-            <input id="stroke" name='stroke' type="color">
-            <label for="lineWidth">Line Width</label>
-            <input id="lineWidth" name='lineWidth' type="number" value="5">
-            <button id="clear">Clear</button>
+            <div id="toolbar">
+                <h1>Faça o seu Desenho</h1>
+                <button id="clear">Clear</button>
+                <button id="save">Save</button>
 
-            <div  class="border border-4 mt-5 ms-5" style="width: 500px; height: 400px;"></div>
-            <div class="drawing-board">
-                <canvas id="drawing-board" width="200px" height="200px"></canvas>
-            </div>
-            </div>
-               
+                <div class="drawing-board">
+                   
+                    <canvas id="drawing-board" width="500" height="500" style=" background-color: azure; margin-top: 10px; margin-bottom: 250px; border: 5px solid lightskyblue;" ></canvas>
             
+                </div>
+            </div>
+
+
         </div>
 
+       
+
         
-    
-            
-        
-    
+
+
+
+
+
+
 
     </main>
     <script src="./Controllers/login.js"></script>
-    <script src="./Controllers/FormPost.js"></script>  
-    <script src="./Controllers/logout.js"></script> 
-    
+    <script src="./Controllers/FormPost.js"></script>
+    <script src="./Controllers/logout.js"></script>
+
     <script>
 
-        const canvas = document.getElementById('drawing-board');
-        const toolbar = document.getElementById('toolbar');
-        const ctx = canvas.getContext('2d');
-        
-        const canvasOffsetX = canvas.offsetLeft;
-        const canvasOffsetY = canvas.offsetTop;
-        
-        canvas.width = window.innerWidth - canvasOffsetX;
-        canvas.height = window.innerHeight - canvasOffsetY;
-        
-        let isPainting = false;
-        let lineWidth = 5;
-        let startX;
-        let startY;
-        
+const gCanvas = document.querySelector('#drawing-board');
+const toolbar = document.getElementById('toolbar');
+const gCtx = gCanvas.getContext('2d');
+
+    
+
         toolbar.addEventListener('click', e => {
             if (e.target.id === 'clear') {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
             }
         });
-        
-        toolbar.addEventListener('change', e => {
-            if(e.target.id === 'stroke') {
-                ctx.strokeStyle = e.target.value;
-            }
-        
-            if(e.target.id === 'lineWidth') {
-                lineWidth = e.target.value;
-            }
-            
-        });
-        
-        const draw = (e) => {
-            if(!isPainting) {
-                return;
-            }
-        
-            ctx.lineWidth = lineWidth;
-            ctx.lineCap = 'round';
-        
-            ctx.lineTo(e.clientX - canvasOffsetX, e.clientY);
-            ctx.stroke();
-        }
-        
-        canvas.addEventListener('mousedown', (e) => {
-            isPainting = true;
-            startX = e.clientX;
-            startY = e.clientY;
-        });
-        
-        canvas.addEventListener('mouseup', e => {
-            isPainting = false;
-            ctx.stroke();
-            ctx.beginPath();
-        });
-        
-        canvas.addEventListener('mousemove', draw);
-        
-            </script>
 
-    <script>
-        function mostraDraw(){
-    document.getElementById('abc').style.display = 'block';
+
+        function onMouseDown(e) {
+  e.preventDefault();  
+  window.addEventListener('mousemove', onMouseMove);
+  window.addEventListener('mouseup', onMouseUp);
 }
+
+function onMouseMove(e) {
+  e.preventDefault();
+  gCtx.fillRect(e.offsetX - 4, e.offsetY - 4, 8, 8);
+}
+
+function onMouseUp(e) {
+  e.preventDefault();
+  window.removeEventListener('mousemove', onMouseMove);
+  window.removeEventListener('mouseup', onMouseUp);
+
+}
+
+
+
+function onSave() {
+  gCanvas.toBlob((blob) => {
+    const timestamp = Date.now().toString();
+    const a = document.createElement('a');
+    document.body.append(a);
+    a.download = `export-${timestamp}.png`;
+    a.href = URL.createObjectURL(blob);
+    a.click();
+    a.remove();
+  });
+}
+
+
+gCanvas.addEventListener('mousedown', onMouseDown);
+document.querySelector('#save').addEventListener('click', onSave);
     </script>
 
-    
+    <script>
+        function mostraDraw() {
+            document.getElementById('abc').style.display = 'block';
+        }
+
+    </script>
+
+    <script>
+      
+    </script>
+
+
 </body>
 
 </html>
