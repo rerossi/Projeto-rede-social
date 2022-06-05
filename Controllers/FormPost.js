@@ -9,7 +9,10 @@
          this.postImage = document.getElementById(idPostImage);
          this.postVideo = document.getElementById(idPostVideo);
          this.postAudio = document.getElementById(idPostAudio);
+         this.posts = [];
          this.addSubmit();
+
+         document.getElementById('posts').innerHTML = localStorage.getItem('posts');
      }
 
      onSubmit(func) {
@@ -103,20 +106,29 @@
                  this.postVideo.mostrar = false;
                  this.postAudio.src = null;
                  this.postAudio.mostrar = false;
+
+                 this.posts = [...this.posts, '<li class="post">' + newPost.innerHTML + '</li>'];
+                 localStorage.setItem('posts', this.posts)
+
              } else {
                  alert('Verifique o campo digitado');
              }
          }
-
          this.onSubmit(handleSubmit)
      }
 
  }
 
+ //  let post = localStorage.setItem('post' || [])
 
 
  //instancia a classe FormPost
  const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage', 'uploadVideo', 'uploadAudio');
+
+
+
+
+
 
  const flImage = document.querySelector("#flImage");
  const flVideo = document.querySelector("#flVideo");
@@ -196,27 +208,26 @@
 
  //geolocalização do usuário
 
- function getLocation(){
-    if("geolocation" in navigator){
+ function getLocation() {
+     if ("geolocation" in navigator) {
 
-                            //watchPosition
-        navigator.geolocation.watchPosition(locationSucess, locationError)
-    }
-    else{
-        alert("Não existe API de Geolocalização");
-    }    
-}
+         //watchPosition
+         navigator.geolocation.watchPosition(locationSucess, locationError)
+     } else {
+         alert("Não existe API de Geolocalização");
+     }
+ }
 
-function locationSucess(data){
-    let latitude = data.coords.latitude;
-    let longitude = data.coords.longitude;
+ function locationSucess(data) {
+     let latitude = data.coords.latitude;
+     let longitude = data.coords.longitude;
 
-    document.getElementById("latitude").innerHTML = latitude;
-    document.getElementById("longitude").innerHTML = longitude;
+     document.getElementById("latitude").innerHTML = latitude;
+     document.getElementById("longitude").innerHTML = longitude;
 
-    console.log(latitude,longitude);
-}
+     console.log(latitude, longitude);
+ }
 
-function locationError(data){
-    
-}
+ function locationError() {
+     alert('Localização não encontrada');
+ }
