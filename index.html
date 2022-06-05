@@ -11,6 +11,11 @@
     <!-- JavaScript Bundle with Popper -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="./style/style.css">
+    <meta name="theme-color" content="#f9f9f9">
+    <link rel="apple-touch-icon" href="images/icons/icon-152x152.png">
+    <link rel="manifest" href="manifest.json" />
+    <link rel="canonical" href="">
+
     <title>Oi Sumido</title>
     <style>
         .hidden {
@@ -19,6 +24,10 @@
         
         .show {
             display: block;
+        }
+        
+        #imgConverted {
+            display: none;
         }
     </style>
 </head>
@@ -95,18 +104,20 @@
         <audio id="uploadAudio" src=""></audio>
         <div id="abc" class="hidden">
             <div id="toolbar">
-                <h1>Draw.</h1>
-                <label for="stroke">Stroke</label>
-                <input id="stroke" name='stroke' type="color">
-                <label for="lineWidth">Line Width</label>
-                <input id="lineWidth" name='lineWidth' type="number" value="5">
+                <h1>Faça o seu Desenho</h1>
                 <button id="clear">Clear</button>
-
+                <button id="save">Save</button>
 
                 <div class="drawing-board">
-                    <canvas class="border border-4" id="drawing-board" style="width: 500px; height: 400px;"></canvas>
+
+                    <canvas id="drawing-board" width="500" height="500" style=" background-color: azure; margin-top: 10px; margin-bottom: 250px; border: 5px solid lightskyblue;"></canvas>
+
                 </div>
             </div>
+
+
+        </div>
+
 
 
 
@@ -118,68 +129,59 @@
 
 
     </main>
-    <script src=" ./Controllers/login.js "></script>
-    <script src="./Controllers/FormPost.js "></script>
-    <script src="./Controllers/logout.js "></script>
+    <script src="./Controllers/login.js"></script>
+    <script src="./Controllers/FormPost.js"></script>
+    <script src="./Controllers/logout.js"></script>
 
     <script>
-        const canvas = document.getElementById('drawing-board');
+        const gCanvas = document.querySelector('#drawing-board');
         const toolbar = document.getElementById('toolbar');
-        const ctx = canvas.getContext('2d');
+        const gCtx = gCanvas.getContext('2d');
 
-        const canvasOffsetX = canvas.offsetLeft;
-        const canvasOffsetY = canvas.offsetTop;
 
-        canvas.width = window.innerWidth - canvasOffsetX;
-        canvas.height = window.innerHeight - canvasOffsetY;
-
-        let isPainting = false;
-        let lineWidth = 5;
-        let startX;
-        let startY;
 
         toolbar.addEventListener('click', e => {
             if (e.target.id === 'clear') {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
             }
         });
 
-        toolbar.addEventListener('change', e => {
-            if (e.target.id === 'stroke') {
-                ctx.strokeStyle = e.target.value;
-            }
 
-            if (e.target.id === 'lineWidth') {
-                lineWidth = e.target.value;
-            }
-
-        });
-
-        const draw = (e) => {
-            if (!isPainting) {
-                return;
-            }
-
-            ctx.lineWidth = lineWidth;
-            ctx.lineCap = 'round';
-
-            ctx.lineTo(e.clientX - canvasOffsetX, e.clientY);
-            ctx.stroke();
+        function onMouseDown(e) {
+            e.preventDefault();
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
         }
 
-        canvas.addEventListener('mousedown', (e) => {
-            isPainting = true;
-            startX = e.clientX;
-            startY = e.clientY;
-        });
+        function onMouseMove(e) {
+            e.preventDefault();
+            gCtx.fillRect(e.offsetX - 4, e.offsetY - 4, 8, 8);
+        }
 
-        canvas.addEventListener('mouseup', e => {
-            isPainting = false;
-            ctx.stroke();
-            ctx.beginPath();
-        });
+        function onMouseUp(e) {
+            e.preventDefault();
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', onMouseUp);
 
-        canvas.addEventListener('mousemove', draw);
+        }
+
+
+
+        function onSave() {
+            gCanvas.toBlob((blob) => {
+                const timestamp = Date.now().toString();
+                const a = document.createElement('a');
+                document.body.append(a);
+                a.download = `export-${timestamp}.png`;
+                a.href = URL.createObjectURL(blob);
+                a.click();
+                a.remove();
+            });
+        }
+
+
+        gCanvas.addEventListener('mousedown', onMouseDown);
+        document.querySelector('#save').addEventListener('click', onSave);
     </script>
 
     <script>
@@ -187,6 +189,8 @@
             document.getElementById('abc').style.display = 'block';
         }
     </script>
+
+
 
 
 </body>

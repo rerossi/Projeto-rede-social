@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 
+
 input[type='file'] {
     display: none;
 }
@@ -46,6 +47,7 @@ input[type='button'] {
 body {
     background-color: #fbfbfb;
     font-family: 'Roboto', sans-serif;
+    background-image: url("../assets/plano-fundo.jpg");
 }
 
 li {
