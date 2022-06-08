@@ -80,7 +80,7 @@
             
             </p>`;
 
-
+                // separa o post para postar apenas imagem, video ou audio.
                  if (this.postImage.mostrar)
                      newPost.innerHTML += `<img src="${this.postImage.src}" style="width:30%; margin-bottom: 20px;">`;
 
@@ -113,74 +113,33 @@
              } else {
                  alert('Verifique o campo digitado');
              }
+
+
+             document.querySelector(".laranja").style.display = 'none';
          }
          this.onSubmit(handleSubmit)
+         
      }
 
  }
 
- //  let post = localStorage.setItem('post' || [])
-
-
  //instancia a classe FormPost
  const postForm = new FormPost('formPost', 'textarea', 'posts', 'uploadImage', 'uploadVideo', 'uploadAudio');
 
-
-
-
-
-
- const flImage = document.querySelector("#flImage");
- const flVideo = document.querySelector("#flVideo");
- const flAudio = document.querySelector("#flAudio");
- flImage.mostrar = false;
- flVideo.mostrar = false;
- flAudio.mostrar = false;
-
- //função upload da imagem
- flImage.addEventListener("change", function() {
-     const reader = new FileReader();
-     reader.addEventListener("load", () => {
-         const uploaded_image = reader.result;
-         document.querySelector("#uploadImage").mostrar = true;
-         document.querySelector("#uploadImage").src = uploaded_image;
-     });
-     reader.readAsDataURL(this.files[0]);
- });
-
- //função upload do video
-
- flVideo.addEventListener("change", function() {
-     const reader = new FileReader();
-     reader.addEventListener("load", () => {
-         const uploaded_video = reader.result;
-         document.querySelector("#uploadVideo").mostrar = true;
-         document.querySelector("#uploadVideo").src = uploaded_video;
-     });
-     reader.readAsDataURL(this.files[0]);
- });
-
- //função de upload do audio
-
- flAudio.addEventListener("change", function() {
-     const reader = new FileReader();
-     reader.addEventListener("load", () => {
-         const uploaded_audio = reader.result;
-         document.querySelector("#uploadAudio").mostrar = true;
-         document.querySelector("#uploadAudio").src = uploaded_audio;
-     });
-     reader.readAsDataURL(this.files[0]);
- });
-
-
+ // guarda o usuário logado no localStorage
+ 
  let userLogado = JSON.parse(localStorage.getItem('userLogado'))
-
+ 
  let logado = document.querySelector('#logado')
 
  let postName = document.querySelector('#postName')
 
+
  logado.innerHTML = `Olá ${userLogado.fullName}`
  postName.innerHTML = `${userLogado.fullName}`
+
+ 
+// evento de clique para o icone de imagem
 
  let photo = document.getElementById('imgPhoto');
  let file = document.getElementById('flImage');
@@ -188,6 +147,24 @@
  photo.addEventListener('click', () => {
      file.click();
  });
+
+ //função upload da imagem
+ const flImage = document.querySelector("#flImage");
+ flImage.mostrar = false;
+
+ flImage.addEventListener("change", function() {
+     const reader = new FileReader();
+     reader.addEventListener("load", () => {
+         const uploaded_image = reader.result;
+         document.querySelector("#uploadImage").mostrar = true;
+         document.querySelector("#uploadImage").src = uploaded_image;
+         
+     });
+     reader.readAsDataURL(this.files[0]);
+     document.querySelector(".laranja").style.display = 'block';
+ });
+
+ // evento de clique para o icone de video
 
  let myVideo = document.getElementById('myVideo');
  let fileVideo = document.getElementById('flVideo');
@@ -197,12 +174,47 @@
      fileVideo.click();
  });
 
+ //função upload do video
+
+ const flVideo = document.querySelector("#flVideo");
+ flVideo.mostrar = false;
+
+ flVideo.addEventListener("change", function() {
+     const reader = new FileReader();
+     reader.addEventListener("load", () => {
+         const uploaded_video = reader.result;
+         document.querySelector("#uploadVideo").mostrar = true;
+         document.querySelector("#uploadVideo").src = uploaded_video;
+     });
+     reader.readAsDataURL(this.files[0]);
+     document.querySelector(".laranja").style.display = 'block';
+ });
+
+
+ // evento de clique para icone de audio
+ 
  let myAudio = document.getElementById('myAudio');
  let fileAudio = document.getElementById('flAudio');
 
 
  myAudio.addEventListener('click', () => {
      flAudio.click();
+ });
+
+ //função de upload do audio
+
+ const flAudio = document.querySelector("#flAudio");
+ flAudio.mostrar = false;
+
+ flAudio.addEventListener("change", function() {
+     const reader = new FileReader();
+     reader.addEventListener("load", () => {
+         const uploaded_audio = reader.result;
+         document.querySelector("#uploadAudio").mostrar = true;
+         document.querySelector("#uploadAudio").src = uploaded_audio;
+     });
+     reader.readAsDataURL(this.files[0]);
+    
  });
 
 
@@ -231,3 +243,62 @@
  function locationError() {
      alert('Localização não encontrada');
  }
+
+ // mostra o diplay de desenho quando clicado
+
+ function mostraDraw() {
+    document.getElementById('show-display').style.display = 'block';
+}
+
+
+// função para desenhar com canvas
+
+ const gCanvas = document.querySelector('#drawing-board');
+        const toolbar = document.getElementById('toolbar');
+        const gCtx = gCanvas.getContext('2d');
+
+
+
+        toolbar.addEventListener('click', e => {
+            if (e.target.id === 'clear') {
+                gCtx.clearRect(0, 0, gCanvas.width, gCanvas.height);
+            }
+        });
+
+
+        function onMouseDown(e) {
+            e.preventDefault();
+            window.addEventListener('mousemove', onMouseMove);
+            window.addEventListener('mouseup', onMouseUp);
+        }
+
+        function onMouseMove(e) {
+            e.preventDefault();
+            gCtx.fillRect(e.offsetX - 4, e.offsetY - 4, 8, 8);
+        }
+
+        function onMouseUp(e) {
+            e.preventDefault();
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', onMouseUp);
+
+        }
+
+
+
+        function onSave() {
+            gCanvas.toBlob((blob) => {
+                const timestamp = Date.now().toString();
+                const a = document.createElement('a');
+                document.body.append(a);
+                a.download = `export-${timestamp}.png`;
+                a.href = URL.createObjectURL(blob);
+                a.click();
+                a.remove();
+                toolbar.style.display = 'none';
+            });
+        }
+
+
+        gCanvas.addEventListener('mousedown', onMouseDown);
+        document.querySelector('#save').addEventListener('click', onSave);

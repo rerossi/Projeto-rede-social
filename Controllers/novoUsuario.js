@@ -45,6 +45,7 @@ let validPassword = false;
 let confirmPassword = document.querySelector('#confirm');
 let validConfirmPassword = false;
 
+// valida o campo de nome do formulário
 
 fullName.addEventListener('keyup', () => {
 
@@ -65,6 +66,8 @@ fullName.addEventListener('keyup', () => {
 });
 
 
+// // valida o campo de CPF do formulário
+
 cpf.addEventListener('keyup', () => {
 
     if (cpf.value.length > 11 || cpf.value.length < 11) {
@@ -78,6 +81,8 @@ cpf.addEventListener('keyup', () => {
 
     }
 })
+
+// valida o campo de senha do formulário
 
 password.addEventListener('keyup', () => {
 
@@ -94,6 +99,9 @@ password.addEventListener('keyup', () => {
     }
 })
 
+
+// valida o campo de confirma senha do formulário
+
 confirmPassword.addEventListener('keyup', () => {
 
     if (password.value != confirmPassword.value) {
@@ -108,6 +116,9 @@ confirmPassword.addEventListener('keyup', () => {
 
     }
 })
+
+
+// confirma se os dados estão corretos e guarda no localStorage
 
 function cadastrar() {
     let msgCadError = document.querySelector('#msgCadError');

@@ -7,62 +7,87 @@
 }
 
 
-input[type='file'] {
-    display: none;
-}
-
-input[type='button'] {
-    display: none;
-}
-
-#imgPhoto {
-    cursor: pointer;
-}
-
-#myVideo {
-    cursor: pointer;
-}
-
-#myAudio {
-    cursor: pointer;
-}
-
-#myDraw{
-
-    cursor: pointer;
-}
-
-#uploadImage {
-    max-width: 10%;
-}
-
-#uploadVideo {
-    max-width: 30%;
-}
-
-.logo img {
-    margin-left: 650px;
-}
-
 body {
     background-color: #fbfbfb;
     font-family: 'Roboto', sans-serif;
     background-image: url("../assets/plano-fundo.jpg");
 }
 
-li {
-    /* tira a marcação das listas*/
-    list-style: none;
-}
 
 nav {
     background-color: lightskyblue;
 }
 
+
+.logo img {
+    margin-left: 650px;
+}
+
+
+.btnLogout {
+    background: lightgoldenrodyellow;
+    width: 10%;
+    margin-left: 100px;
+    height: 30px;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+
+.coracao {
+    width: 1px;
+    height: 1px;
+    position: relative;
+    margin: 0 20px;
+    animation: pulse 1s infinite alternate ease-in-out;
+    margin: 0 auto;
+    margin-right: 165px;
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(.9) rotate(-135deg);
+    }
+    100% {
+        transform: scale(1.1) rotate(-135deg);
+    }
+}
+
+.quadrado {
+    width: 25px;
+    height: 25px;
+    background: #c70000;
+    position: absolute;
+}
+
+.circulo-1 {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #c70000;
+    position: absolute;
+    top: 12px;
+}
+
+.circulo-2 {
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background: #c70000;
+    position: absolute;
+    left: 12px;
+}
+
+
 .main {
     max-width: 900px;
     margin: 0 auto;
     ;
+}
+
+li {
+    /* tira a marcação das listas*/
+    list-style: none;
 }
 
 .newPost {
@@ -78,6 +103,7 @@ nav {
     box-shadow: 10px 5px 5px black;
     ;
 }
+
 
 .btnFileForm {
     background-color: white;
@@ -160,59 +186,61 @@ nav {
     margin-right: 8px;
 }
 
-.btnLogout {
-    background: lightgoldenrodyellow;
-    width: 10%;
-    margin-left: 100px;
-    height: 30px;
-    border-radius: 8px;
+
+input[type='file'] {
+    display: none;
+}
+
+input[type='button'] {
+    display: none;
+}
+
+#imgPhoto {
     cursor: pointer;
 }
 
-.coracao {
-    width: 1px;
-    height: 1px;
-    position: relative;
-    margin: 0 20px;
-    animation: pulse 1s infinite alternate ease-in-out;
-    margin: 0 auto;
-    margin-right: 165px;
+#myVideo {
+    cursor: pointer;
 }
 
-@keyframes pulse {
-    0% {
-        transform: scale(.9) rotate(-135deg);
-    }
-    100% {
-        transform: scale(1.1) rotate(-135deg);
-    }
+#myAudio {
+    cursor: pointer;
 }
 
-.quadrado {
-    width: 25px;
-    height: 25px;
-    background: #c70000;
-    position: absolute;
+#myDraw{
+
+    cursor: pointer;
 }
 
-.circulo-1 {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #c70000;
-    position: absolute;
-    top: 12px;
+#uploadImage {
+    max-width: 40%;
+    margin-left: 150px;
+    margin-top: 80px;
 }
 
-.circulo-2 {
-    width: 25px;
-    height: 25px;
-    border-radius: 50%;
-    background: #c70000;
-    position: absolute;
-    left: 12px;
+#uploadVideo {
+    max-width: 40%;
+    margin-top: 80px;
 }
+
 
 #logado {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
+
+.hidden {
+    display: none;
+}
+
+.laranja {
+    position: relative;
+    background: #FDF6F6;
+    width: 500px; /* ajuste a largura */
+    height: 300px; /* ajuste a altura */
+    margin: 0 auto; /* alinha a div no centro */
+    top: -350px; /*CONTROLE AQUI A DISTANCIA*/
+    border-radius: 20px;
+    display: none;
+    
+}
+
