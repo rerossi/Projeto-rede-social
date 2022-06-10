@@ -21,6 +21,8 @@ nav {
 
 .logo img {
     margin-left: 650px;
+    
+ 
 }
 
 
@@ -232,13 +234,13 @@ input[type='button'] {
     display: none;
 }
 
-.laranja {
+.show-itens {
     position: relative;
     background: #FDF6F6;
     width: 500px; /* ajuste a largura */
     height: 300px; /* ajuste a altura */
     margin: 0 auto; /* alinha a div no centro */
-    top: -350px; /*CONTROLE AQUI A DISTANCIA*/
+    top: -50px; /*CONTROLE AQUI A DISTANCIA*/
     border-radius: 20px;
     display: none;
     

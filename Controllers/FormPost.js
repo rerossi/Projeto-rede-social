@@ -115,7 +115,7 @@
              }
 
 
-             document.querySelector(".laranja").style.display = 'none';
+             document.querySelector(".show-itens").style.display = 'none';
          }
          this.onSubmit(handleSubmit)
          
@@ -161,7 +161,7 @@
          
      });
      reader.readAsDataURL(this.files[0]);
-     document.querySelector(".laranja").style.display = 'block';
+     document.querySelector(".show-itens").style.display = 'block';
  });
 
  // evento de clique para o icone de video
@@ -187,7 +187,7 @@
          document.querySelector("#uploadVideo").src = uploaded_video;
      });
      reader.readAsDataURL(this.files[0]);
-     document.querySelector(".laranja").style.display = 'block';
+     document.querySelector(".show-itens").style.display = 'block';
  });
 
 
