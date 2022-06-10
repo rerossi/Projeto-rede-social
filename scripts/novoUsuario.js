@@ -88,7 +88,7 @@ password.addEventListener('keyup', () => {
 
     if (password.value.length <= 5) {
         labelPassword.setAttribute('style', 'color: red');
-        labelPassword.innerHTML = 'Senha: * Minimo de 6 caracteres, 1 letra Maisucula e 1 número';
+        labelPassword.innerHTML = 'Senha: * Min de 6 caracteres, 1 letra Maisucula e 1 número';
         validPassword = false;
 
     } else if ((password.value.length > 5) && (password.value.match(/[A-Z]+/)) && password.value.match(/[1-9]+/)) {

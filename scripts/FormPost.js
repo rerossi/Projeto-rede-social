@@ -61,7 +61,7 @@
                  //mostra um elemento Html
                  newPost.innerHTML = `
                  <details>
-            <summary><b><img src="assets/map.png" style="width:40px; margin-bottom: 10px; margin-right: 5px; ">Sua Localização</b></summary>
+            <summary><b><img src="imagens/map.png" style="width:40px; margin-bottom: 10px; margin-right: 5px; ">Sua Localização</b></summary>
                 <p><b>Latitude: <span id="latitude"></span>
                       Longitude: <span id="longitude"></span></b></p>
             </details>
@@ -91,9 +91,9 @@
                      newPost.innerHTML += `<audio src="${this.postAudio.src}" controls style="width:30%; margin-bottom: 20px;"></audio>`;
 
                  newPost.innerHTML += `<div class="actionBtnPost">
-            <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./assets/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
-            <button type="button" class="filePost mx-5" style="background-color:lightseagreen"><img src="./assets/comentar.png" alt="Comentar"><b class="text-white">Comentar</b></button>
-            <button type="button" class="filePost " style="background-color: deepskyblue;"><img src="./assets/compartilhar.png" alt="compartilhar"><b class="text-white">Compartilhar</b></button>
+            <button type="button" class="filePost " style="background-color: lightcoral;"><img src="./imagens/curtir.png" alt="Curtir"><b class="text-white">Curtir</b></button>
+            <button type="button" class="filePost mx-5" style="background-color:lightseagreen"><img src="./imagens/comentar.png" alt="Comentar"><b class="text-white">Comentar</b></button>
+            <button type="button" class="filePost " style="background-color: deepskyblue;"><img src="./imagens/compartilhar.png" alt="compartilhar"><b class="text-white">Compartilhar</b></button>
             
             </div>
             `;
