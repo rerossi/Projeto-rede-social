@@ -1,3 +1,7 @@
 # Projeto-rede-social
 
-Esse projeto
+Projeto da disciplina de Aplicações Ricas para internet.
+criar uma rede social em que o usuário possa postar texto, fotos, videos e fazer um desenho,
+validações de formulário de login e cadastro, animações, foi utilizado Html, Css e Javascript para efetivação do projeto.
+guardar dados do usuário e posts no LocalStorage.
+
